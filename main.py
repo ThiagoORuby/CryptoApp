@@ -1,3 +1,12 @@
+"""
+Autor: ThiagoORuby
+
+Objetivos: 
+- Criação de uma UI com tkinter
+- Api rest com Flask
+- App mobile com Flutter
+"""
+
 from rsa_crypto import RSA
 
 module = RSA()
