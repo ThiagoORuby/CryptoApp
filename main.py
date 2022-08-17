@@ -31,15 +31,15 @@ while True:
         n = int(input())
         e = int(input())
         crypted = module.encrypting("ola mundo", n, e)
-        print(crypted)
-        print(f"Mensagem criptografada: \n {crypted}")
+        #print(crypted)
+        print(f"Mensagem criptografada: \n{crypted}")
     elif option == 3:
         print("\nInforme os valores da mensagem criptografada e os valores da chave privada:")
-        crypted = list(input())
+        crypted = list(map(int, input().split()))
         p = int(input())
         q = int(input())
         e = int(input())
-        module.decrypting(crypted, p, q, e)
+        print("\nMensagem desencriptada: {}".format(module.decrypting(crypted, p, q, e)))
     else:
         print("\nInfome um valor válido\n")
         continue

@@ -20,12 +20,16 @@ class RSA:
 
         return n, e
 
+    def _listToString(self, list):
+        newList = [str(i) for i in list]
+        return " ".join(newList)
     
     def encrypting(self, mensage, n, e):
         code_m = [self._letras[i] for i in mensage.lower()]
         cripted = [pow(i, e, n) for i in code_m]
-        return cripted
-        
+        return self._listToString(cripted)
+    
+
     def decrypting(self, cripted, p, q, e):
         tot = (p - 1)*(q - 1)
         d = pow(e, -1, tot)
