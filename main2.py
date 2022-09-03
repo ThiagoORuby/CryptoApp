@@ -1,6 +1,5 @@
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.app import MDApp
-from kivy.app import App
 from rsa_crypto import RSA
 
 rsa = RSA()
@@ -12,6 +11,9 @@ class HomeScreen(Screen):
 	pass
 
 class GenerateKeyScreen(Screen):
+
+	def callback(self):
+		self.parent.current = 'home'
 	
 	def gerar_chaves(self, **kw):
 		p = int(self.ids.p.text)
@@ -21,8 +23,9 @@ class GenerateKeyScreen(Screen):
 		self.ids.valores.text = f"n = {n}, e = {e}"
 		
 class EncryptScreen(Screen):
-	
-	
+
+	def callback(self):
+		self.parent.current = 'home'
 	
 	def gerar_chaves(self, **kw):
 		mensage = self.ids.mensage.text
@@ -32,6 +35,7 @@ class EncryptScreen(Screen):
 		self.ids.valores.text = f"Cripted mensage: {cripted}"
 		
 class DecryptScreen(Screen):
+	
 	def callback(self):
 		self.parent.current = 'home'
 	
@@ -48,6 +52,7 @@ class Main(MDApp):
 	
 	def build(self):
 		self.theme_cls.theme_style = "Dark"
+		self.theme_cls.primary_palette = "Purple"
 		return Manager()
 		
 

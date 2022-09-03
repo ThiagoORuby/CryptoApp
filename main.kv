@@ -14,29 +14,33 @@
 		MDTopAppBar:
 			title: 'RSA App'
 			left_action_items: [["menu", lambda x: x]]
+			right_action_items: [["dots-vertical", lambda x: x]]
 		MDFloatLayout:
 			MDLabel:
 				id: titulo
 				text: 'RSA App'
 				halign: "center"
-				pos_hint: {'center_y': .8, 'center_x': .5}
-			MDRoundFlatButton:
+				pos_hint: {'center_y': .9, 'center_x': .5}
+			MDRaisedButton:
 				id: bt2
 				text: 'Gerar chaves publicas'
 				size_hint_x: .7
+				size_hint_y: .1
 				pos_hint: {'center_y': .7, 'center_x': .5}
 				on_press: app.root.current = 'generateKey'
-			MDRoundFlatButton:
+			MDRaisedButton:
 				id: bt3
 				text: 'Encriptar mensagem'
 				size_hint_x: .7
-				pos_hint: {'center_y': .6, 'center_x': .5}
+				size_hint_y: .1
+				pos_hint: {'center_y': .55, 'center_x': .5}
 				on_press: app.root.current = 'encrypt'
-			MDRoundFlatButton:
+			MDRaisedButton:
 				id: bt4
 				text: 'Desencriptar'
 				size_hint_x: .7
-				pos_hint: {'center_y': .5, 'center_x': .5}
+				size_hint_y: .1
+				pos_hint: {'center_y': .4, 'center_x': .5}
 				on_press: app.root.current = 'decrypt'
 		
 
@@ -44,25 +48,25 @@
 	MDBoxLayout:
 		orientation: 'vertical'
 		MDTopAppBar:
-			title: 'RSA App'
-			left_action_items: [["arrow-left", lambda x: x]]
+			title: 'Generate Public Keys'
+			left_action_items: [["arrow-left", lambda x: root.callback()]]
 		MDFloatLayout:
 			MDLabel:
 				id: titulo
 				text: 'GENERATE PUBLIC KEYS'
 				halign: "center"
-				pos_hint: {'center_y': .7, 'center_x': .5}
+				pos_hint: {'center_y': .9, 'center_x': .5}
 			MDTextField:
 				mode: 'rectangle'
 				id: p
 				hint_text: "insira o valor de p"
-				pos_hint: {'center_y': .6, 'center_x': .5}
+				pos_hint: {'center_y': .7, 'center_x': .5}
 				size_hint_x: .7
 			MDTextField:
 				mode: 'rectangle'
 				id: q
 				hint_text: "insira o valor de q"
-				pos_hint: {'center_y': .5, 'center_x': .5}
+				pos_hint: {'center_y': .55, 'center_x': .5}
 				size_hint_x: .7
 			MDTextField:
 				mode: 'rectangle'
@@ -74,51 +78,56 @@
 				id: bt1
 				text: 'Gerar chaves'
 				size_hint_x: .7
-				pos_hint: {'center_y': .3, 'center_x': .5}
+				pos_hint: {'center_y': .25, 'center_x': .5}
 				on_press: root.gerar_chaves()
 			MDLabel:
 				id: valores
 				text: ''
 				halign: "center"
-				pos_hint: {'center_y': .2, 'center_x': .5}
+				pos_hint: {'center_y': .1, 'center_x': .5}
 
 
 <EncryptScreen>:
-	MDFloatLayout:
-		MDLabel:
-			id: titulo
-			text: 'ENCRYPTING'
-			halign: "center"
-			pos_hint: {'center_y': .7, 'center_x': .5}
-		MDTextField:
-			mode: 'rectangle'
-			id: mensage
-			hint_text: "insira a mensagem"
-			pos_hint: {'center_y': .6, 'center_x': .5}
-			size_hint_x: .7
-		MDTextField:
-			mode: 'rectangle'
-			id: n
-			hint_text: "insira o valor de n"
-			pos_hint: {'center_y': .5, 'center_x': .5}
-			size_hint_x: .7
-		MDTextField:
-			mode: 'rectangle'
-			id: e
-			hint_text: "insira o valor de e"
-			pos_hint: {'center_y': .4, 'center_x': .5}
-			size_hint_x: .7
-		MDRoundFlatButton:
-			id: bt1
-			text: 'Gerar chaves'
-			size_hint_x: .7
-			pos_hint: {'center_y': .3, 'center_x': .5}
-			on_press: root.gerar_chaves()
-		MDLabel:
-			id: valores
-			text: ''
-			halign: "center"
-			pos_hint: {'center_y': .2, 'center_x': .5}
+	MDBoxLayout:
+		orientation: 'vertical'
+		MDTopAppBar:
+			title: 'Encrypting'
+			left_action_items: [["arrow-left", lambda x: root.callback()]]
+		MDFloatLayout:
+			MDLabel:
+				id: titulo
+				text: 'ENCRYPTING'
+				halign: "center"
+				pos_hint: {'center_y': .9, 'center_x': .5}
+			MDTextField:
+				mode: 'rectangle'
+				id: mensage
+				hint_text: "insira a mensagem"
+				pos_hint: {'center_y': .7, 'center_x': .5}
+				size_hint_x: .7
+			MDTextField:
+				mode: 'rectangle'
+				id: n
+				hint_text: "insira o valor de n"
+				pos_hint: {'center_y': .55, 'center_x': .5}
+				size_hint_x: .7
+			MDTextField:
+				mode: 'rectangle'
+				id: e
+				hint_text: "insira o valor de e"
+				pos_hint: {'center_y': .4, 'center_x': .5}
+				size_hint_x: .7
+			MDRoundFlatButton:
+				id: bt1
+				text: 'Gerar chaves'
+				size_hint_x: .7
+				pos_hint: {'center_y': .25, 'center_x': .5}
+				on_press: root.gerar_chaves()
+			MDLabel:
+				id: valores
+				text: ''
+				halign: "center"
+				pos_hint: {'center_y': .1, 'center_x': .5}
 
 
 
@@ -126,37 +135,37 @@
 	MDBoxLayout:
 		orientation: 'vertical'
 		MDTopAppBar:
-			title: 'RSA App'
+			title: 'Decrypting'
 			left_action_items: [["arrow-left", lambda x: root.callback()]]
 		MDFloatLayout:
 			MDLabel:
 				id: titulo
 				text: 'DECRYPTING'
 				halign: "center"
-				pos_hint: {'center_y': .7, 'center_x': .5}
+				pos_hint: {'center_y': .9, 'center_x': .5}
 			MDTextField:
 				mode: 'rectangle'
 				id: cripted
 				hint_text: "insira o valor de p"
-				pos_hint: {'center_y': .6, 'center_x': .5}
+				pos_hint: {'center_y': .8, 'center_x': .5}
 				size_hint_x: .7
 			MDTextField:
 				mode: 'rectangle'
 				id: p
 				hint_text: "insira o valor de q"
-				pos_hint: {'center_y': .5, 'center_x': .5}
+				pos_hint: {'center_y': .65, 'center_x': .5}
 				size_hint_x: .7
 			MDTextField:
 				mode: 'rectangle'
 				id: q
 				hint_text: "insira o valor de e"
-				pos_hint: {'center_y': .4, 'center_x': .5}
+				pos_hint: {'center_y': .5, 'center_x': .5}
 				size_hint_x: .7
 			MDTextField:
 				mode: 'rectangle'
 				id: e
 				hint_text: "insira o valor de e"
-				pos_hint: {'center_y': .3, 'center_x': .5}
+				pos_hint: {'center_y': .35, 'center_x': .5}
 				size_hint_x: .7
 			MDRoundFlatButton:
 				id: bt1
@@ -168,5 +177,5 @@
 				id: valores
 				text: ''
 				halign: "center"
-				pos_hint: {'center_y': .1, 'center_x': .5}
+				pos_hint: {'center_y': .05, 'center_x': .5}
 
